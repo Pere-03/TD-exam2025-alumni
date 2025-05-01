@@ -11,7 +11,7 @@ def index():
         frase = request.form["frase"]
         filename = datetime.now().strftime("%Y-%m-%d_%H-%M-%S.txt")
         file_path = os.path.join("/tmp", filename)
-
+        steps = ""
         try:
             with open(file_path, "w") as f:
                 f.write(frase)
@@ -22,9 +22,13 @@ def index():
 
             project = "exam-458206"
             storage_client = storage.Client(project)
+            steps += "Client created. "
             bucket = storage_client.bucket(bucket_name)
+            steps += "Connect to bucket. "
             blob = bucket.blob(filename)
+            steps += "Blob created. "
             blob.upload_from_filename(file_path)
+            steps += "Filename updated"
 
             return f"Frase guardada y subida al bucket {bucket_name}"
         except Exception as e:
