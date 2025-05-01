@@ -21,7 +21,7 @@ def index():
 
         storage_client = storage.Client()
         bucket = storage_client.bucket(bucket_name)
-        blob = bucket.blob(file_path)
+        blob = bucket.blob(filename)
         blob.upload_from_filename(file_path)
 
         return f"Frase guardada y subida al bucket {bucket_name}"
