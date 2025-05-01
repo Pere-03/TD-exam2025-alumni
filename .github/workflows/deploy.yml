@@ -40,6 +40,8 @@ jobs:
     - name: Deploy to GKE
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
+        kubectl apply -f k8s/deployment.generated.yaml
+        kubectl apply -f k8s/service.yaml
     - name: Deploy to App Engine
       run: |
         sed "s/REPLACE_BUCKET_NAME/${{ secrets.GCP_BUCKET_NAME }}/g" app.yaml > app.generated.yaml

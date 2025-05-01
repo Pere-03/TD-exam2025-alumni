@@ -20,7 +20,7 @@ spec:
         - containerPort: 5000
         env:
           - name: GCP_BUCKET_NAME
-            value: "alvaro-bucket-1"
+            value: "REPLACE_BUCKET_NAME"
         livenessProbe:
           periodSeconds: 2
           httpGet:
