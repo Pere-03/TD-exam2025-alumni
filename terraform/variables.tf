@@ -27,8 +27,8 @@ variable "gcp-cluster-name" {
 
 variable "gcp-node-count" {
   description = "K8s Worker nodes"
-  type        = string
-  default     = "2"
+  type        = number
+  default     = 2
 }
 variable "gcp-node-size" {
   description = "K8s Worker nodes"

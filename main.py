@@ -20,12 +20,11 @@ def index():
             if not bucket_name:
                 return "Error: Variable de entorno GCP_BUCKET_NAME no está definida.", 500
 
-            project = "exam-458206"
-            storage_client = storage.Client(project)
+            storage_client = storage.Client()
             steps += "Client created. "
             bucket = storage_client.bucket(bucket_name)
             steps += "Connect to bucket. "
-            blob = bucket.blob(filename)
+            blob = bucket.blob(file_path)
             steps += "Blob created. "
             blob.upload_from_filename(file_path)
             steps += "Filename updated"
@@ -34,7 +33,7 @@ def index():
         except Exception as e:
             return f"Error: {e}. Target bucket: {bucket_name}. Steps: {steps}", 500
 
-    return render_template("index.html")
+    return render_template("index.html"), 200
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
