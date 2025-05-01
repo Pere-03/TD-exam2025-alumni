@@ -32,7 +32,7 @@ def index():
 
             return f"Frase guardada y subida al bucket {bucket_name}"
         except Exception as e:
-            return f"Error: {e}. Target bucket: {bucket_name}", 500
+            return f"Error: {e}. Target bucket: {bucket_name}. Steps: {steps}", 500
 
     return render_template("index.html")
 
