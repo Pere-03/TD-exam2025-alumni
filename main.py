@@ -20,8 +20,7 @@ def index():
             if not bucket_name:
                 return "Error: Variable de entorno GCP_BUCKET_NAME no está definida.", 500
 
-            project = "exam-458206"
-            storage_client = storage.Client(project)
+            storage_client = storage.Client()
             bucket = storage_client.bucket(bucket_name)
             blob = bucket.blob(filename)
             blob.upload_from_filename(file_path)
