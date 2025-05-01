@@ -39,6 +39,7 @@ jobs:
         sed "s/REPLACE_BUCKET_NAME/${{ secrets.GCP_BUCKET_NAME }}/g" k8s/deployment.yaml > k8s/deployment.generated.yaml
     - name: Deploy to GKE
       run: |
+        gcloud config set project $PROJECT_ID 
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
         kubectl apply -f k8s/deployment.generated.yaml
         kubectl apply -f k8s/service.yaml
