@@ -21,10 +21,10 @@ spec:
         env:
           - name: GCP_BUCKET_NAME
             value: "REPLACE_BUCKET_NAME"
-        livenessProbe:
-          periodSeconds: 2
-          httpGet:
-            path: /
-            port: 5000
+        # livenessProbe:
+        #   periodSeconds: 2
+        #   httpGet:
+        #     path: /
+        #     port: 5000
 
 
